@@ -18,6 +18,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "test": "ng test",
     "build": "ng build",
     "lint": "ng lint manage-train",
     "build:client-and-server-bundles": "ng build --prod && ng run manage-train:server:production",
