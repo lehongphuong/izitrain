@@ -35,3 +35,25 @@ jobs:
 
       # run tests!
       # - run: yarn test
+
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$87ac81f3-6717-41f0-afad-b98e9d674c0b@git.heroku.com/$pinkways.git master
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
