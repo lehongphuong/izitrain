@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$87ac81f3-6717-41f0-afad-b98e9d674c0b@git.heroku.com/$pinkways.git master
+            git push https://heroku:87ac81f3-6717-41f0-afad-b98e9d674c0b@git.heroku.com/pinkways.git master
 
 workflows:
   version: 2
