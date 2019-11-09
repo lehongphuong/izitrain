@@ -5,7 +5,8 @@ import {RouterModule} from '@angular/router';
 import {AppComponent} from './app.component'; 
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import { HomePageModule } from './home-page/home-page.module'; 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
 @NgModule({
   declarations: [
     AppComponent, 
@@ -17,6 +18,8 @@ import { HomePageModule } from './home-page/home-page.module';
     ]),
     TransferHttpCacheModule,
     HomePageModule,
+    BrowserAnimationsModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

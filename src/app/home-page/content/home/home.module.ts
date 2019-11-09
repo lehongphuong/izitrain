@@ -4,6 +4,9 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatNativeDateModule} from '@angular/material'
+import {MatDatepickerModule} from '@angular/material/datepicker'
 
 @NgModule({
   declarations: [HomeComponent],
@@ -18,6 +21,10 @@ import { HomeComponent } from './home.component';
     ]),
     FormsModule,
     ReactiveFormsModule,
+
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class HomeModule { }

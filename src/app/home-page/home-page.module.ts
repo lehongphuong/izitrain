@@ -17,8 +17,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
           { path: '', loadChildren: './content/content.module#ContentModule' },
         ],
       } 
-    ]),
-    
+    ]), 
   ]
 })
 export class HomePageModule { }
