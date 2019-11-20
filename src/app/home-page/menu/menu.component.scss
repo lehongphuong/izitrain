@@ -1,16 +1,45 @@
+.cus-logo{
+    height: 80px;
+}
+
 .cus-nav{ 
     background-color: #fff;
     border: 0;
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%,0.2);
-    // font-family: "Times New Roman", Times, serif;
-    // font-size: 20px;
-}
-.cus-button{
-    // background-color: #FFBB33;
-    // color: white;
-}
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%,0.2); 
+}  
 
-.cus-text{
-    font-style: italic;
-    font-size: 15px;
-}
+// mobile
+@media only screen and (max-width: 600px) {
+    .cus-logo{
+        height: 80px;
+    }
+
+    .cus-mobile-menu1{
+        display: none;
+    }
+
+    .cus-mobile-menu2{
+        display: none;
+    }
+
+    .cus-mobile-menu3{
+        display: none;
+    }
+
+    .cus-mobile-menu4{
+        display: inline !important;
+    }
+
+    .cus-mobile-menu5{
+        display: inline !important;
+    }
+
+    .cus-button{
+        margin: 0;
+        padding: 0 5px;
+    }
+
+    .uk-margin-right{
+        margin-right: 10px!important;
+    }
+  }

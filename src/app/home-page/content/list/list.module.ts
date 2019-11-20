@@ -4,6 +4,13 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent } from './list.component';
+import {
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatExpansionModule,
+  MatIconModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [ListComponent],
@@ -18,6 +25,13 @@ import { ListComponent } from './list.component';
     ]),
     FormsModule,
     ReactiveFormsModule,
+
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatIconModule
+
   ]
 })
 export class ListModule { }

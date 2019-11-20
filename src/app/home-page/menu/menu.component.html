@@ -1,32 +1,60 @@
-<nav class="uk-navbar-container uk-margin cus-nav" uk-navbar>
+<nav class="uk-navbar-container  cus-nav" uk-navbar
+    uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
     <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="#">IZI-TRAIN</a>
+        <a class="uk-navbar-item uk-logo" routerLink=""><img class="cus-logo" src="/assets/images/logo-web.png"></a>
     </div>
 
-    <div class="uk-navbar-center cus-text">
-        <!-- Cách Thông Minh Nhất Để Đặt Vé Du Lịch. Bất cứ nơi nào. -->
-        <!-- Smartest Way To Book Travel Tickets. Anywhere. -->
+    <div class="uk-navbar-nav uk-navbar-center cus-mobile-menu1">
+        <li>
+            <a href="#" class="uk-text-emphasis">
+                <span class="uk-icon uk-margin-small-right" style="color: #E1D65B;" uk-icon="icon: world"></span>
+                Website đặt vé chính thức của Đảo Lý Sơn
+            </a>
+        </li>
     </div>
 
     <div class="uk-navbar-right uk-margin-right">
-        <ul class="uk-navbar-nav">
+        <ul class="uk-navbar-nav cus-mobile-menu2">
             <li>
-                <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: lifesaver"></span>
+                <a href="#" class="uk-text-emphasis">
+                    <span class="uk-icon uk-margin-small-right" style="color: #E1D65B;"
+                        uk-icon="icon: lifesaver"></span>
                     Hỗ Trợ
                 </a>
             </li>
         </ul>
 
-        <ul class="uk-navbar-nav">
+        <ul class="uk-navbar-nav cus-mobile-menu3">
             <li>
-                <a href="#">
-                    <span class="uk-icon uk-margin-small-right" uk-icon="icon: info"></span>
+                <a href="#" class="uk-text-emphasis">
+                    <span class="uk-icon uk-margin-small-right" style="color: #E1D65B;" uk-icon="icon: info"></span>
                     Blog
                 </a>
             </li>
         </ul>
 
-        <button class="uk-button uk-button-default cus-button"> Đăng nhập</button>
+        <!-- mobile begin -->
+        <ul class="uk-navbar-nav cus-mobile-menu4" style="display: none;">
+            <li>
+                <a href="#" style="padding: 0;" class="uk-text-emphasis">
+                    <span class="uk-icon" style="padding: 0; color: #E1D65B;" uk-icon="icon: lifesaver"></span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="uk-navbar-nav cus-mobile-menu5" style="display: none;">
+            <li>
+                <a href="#" style="padding: 10px;" class="uk-text-emphasis">
+                    <span class="uk-icon" style="padding: 0; color: #E1D65B;" uk-icon="icon: info"></span>
+                </a>
+            </li>
+        </ul>
+        <!-- mobile end -->
+
+        <button class="uk-button uk-button-default cus-button uk-text-emphasis" >Đăng nhập</button>
     </div>
-</nav> 
+
+    <!-- <div class="uk-navbar-right cus-mobile-menu4" style="display: none;">
+        <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+    </div> -->
+</nav>

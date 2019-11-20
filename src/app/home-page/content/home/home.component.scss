@@ -1,3 +1,70 @@
 .uk-select:not([multiple]):not([size]) { 
     background-image: url(data:i); 
 }
+
+.cus-home{
+    margin-top: 150px;
+}
+
+.cus-home2{
+    text-align: center;
+    padding-top: 130px;
+}
+
+.cus-title-text{
+    color: white;
+    font-weight: bold;
+    display: inline;
+    // background-color: #E1D65B;
+    font-size: 30px;
+    font-family: 'Roboto',sans-serif;
+    text-align: center;
+}
+
+.cus-text{
+    color: white;
+    font-weight: bold;
+    // background-color: #E1D65B;
+    font-size: 20px;
+    margin-bottom: 10px; 
+}
+
+.cus-title-text-booking{
+    color: white;
+    font-weight: bold; 
+    // background-color: #E1D65B;
+    font-family: 'Roboto',sans-serif; 
+    text-align: center;
+}
+
+.cus-booking{
+    height: 320px;
+}
+
+.cus-home-card{
+    padding-bottom: 50px;
+}
+
+// mobile
+@media only screen and (max-width: 600px) {
+    .cus-home{
+        margin-top: 20px;
+    } 
+
+    .cus-home2{
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .cus-card-home1{
+        padding: 20px;
+        border-radius: 10px;
+        margin: 0;
+        height: 275px;
+        box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%,0.2); 
+    }
+
+    .cus-home-card{
+        padding-bottom: 50px;
+    }
+  }

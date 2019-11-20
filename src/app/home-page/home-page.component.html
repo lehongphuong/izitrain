@@ -1,7 +1,12 @@
-<div class="uk-background-muted">
+<div class="uk-background-muted" style="background-color: #F8F8F8;">
     <app-menu></app-menu>
-    <div class="uk-container">
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
+
+    <div class="uk-background-primary uk-background-blend-darken cus-background-image"
+        data-src="/assets/images/background.jpg" uk-img routerLinkActive="fade">
+        <div class="uk-container">
+            <router-outlet></router-outlet>
+        </div> 
+        <a routerLink="/list"></a>
+        <app-footer></app-footer>
+    </div> 
 </div>

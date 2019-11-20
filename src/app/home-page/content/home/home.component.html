@@ -1,35 +1,102 @@
-<div class="uk-container">
-  <h3>Chào buổi tối, người bạn mới!</h3>
-  <p>Bạn đã sẵn sàng cùng IZITrain khám phá những điều tuyệt vời nhất cho chuyến hành trình sắp tới?</p>
+<div class="uk-container cus-home">
+  <span class="cus-title-text">Chào ngày mới, người bạn mới!</span><br>
+  <span class="cus-text">Bạn đã sẵn sàng cùng iZiShip khám phá những điều tuyệt vời nhất cho chuyến hành trình đến
+    Đảo Lý Sơn?</span>
+  <br>
+  <br>
 
-  <div class="uk-card uk-card-default uk-card-body">
+  <div class="uk-card uk-card-default uk-card-body uk-animation-scale-up" style="border-radius: 10px;">
     <form class="uk-grid-small" uk-grid>
       <div class="uk-width-2-5@s uk-inline">
-        <span class="uk-form-icon uk-margin-left" uk-icon="icon: search"></span>
+        <span class="uk-form-icon uk-margin-left" style="color: #1E87F0;" uk-icon="icon: search"></span>
 
-        <mat-select class="uk-select" style="padding-left: 40px;" placeholder="Chọn ngày đi">
+        <mat-select class="uk-select" style="padding-left: 40px;" placeholder="Chọn chuyến đi">
           <mat-option [value]="0">
-            Đảo Lý Sơn <span> => </span> Cảng Sa Kỳ
+            Đảo Lý Sơn <span style="color: #1E87F0;"> 🡆 </span> Cảng Sa Kỳ
           </mat-option>
           <mat-option [value]="1">
-            Cảng Sa Kỳ <span> => </span> Đảo Lý Sơn
+            Cảng Sa Kỳ <span style="color: #1E87F0;"> 🡆 </span> Đảo Lý Sơn
           </mat-option>
         </mat-select>
 
       </div>
 
       <div class="uk-width-2-5@s uk-inline">
-        <span class="uk-form-icon uk-margin-left" uk-icon="icon: calendar"></span>
+        <span class="uk-form-icon uk-margin-left" style="color: #1E87F0;" uk-icon="icon: calendar"></span>
         <input class="uk-input" (click)="picker.open()" [min]="minDate" matInput [matDatepicker]="picker"
-          placeholder="Chọn ngày đi">
-        <mat-datepicker #picker></mat-datepicker>
+          placeholder="Chọn ngày đi" onkeydown="return false">
+        <mat-datepicker touchUi #picker></mat-datepicker>
       </div>
 
       <div class="uk-width-1-5@s uk-inline">
-        <span class="uk-form-icon uk-margin-left" style="color: white;" uk-icon="icon: search"></span>
-        <button class="uk-button uk-button-primary uk-width-1-1"> Tìm kiếm</button>
+        <span class="uk-form-icon uk-margin-left" style="color: #1E87F0;" uk-icon="icon: search"></span>
+        <button class="uk-button uk-button-primary uk-width-1-1" (click)="onSearchClick()" style="border-radius: 20px; background-color: #FFAA00;">
+           Tìm kiếm</button>
       </div>
 
     </form>
   </div>
 </div>
+
+
+<h3 class="uk-align-center cus-home2"><span class="cus-title-text-booking">ĐẶT VÉ TÀU VỚI IZISHIP</span></h3>
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+  <div>
+    <div class="uk-card uk-card-default uk-card-body cus-booking cus-card-home1" style="border-radius: 10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g fill="none" fill-rule="evenodd"><g fill="#FA0" fill-rule="nonzero"><path d="M67.012 50L28 39.43l.273-1.108c1.833-7.113 7.27-12.685 14.254-14.608 6.983-1.922 14.445.1 19.56 5.299 5.116 5.2 7.102 12.783 5.208 19.879L67.012 50zM30.693 37.867l34.749 9.396c1.885-9.485-3.822-18.823-13.024-21.311-9.203-2.488-18.721 2.732-21.725 11.915z"></path><path d="M42.197 59.93l4.315-16.44 2.09.56-4.315 16.44zM57.021 46l-2.12-.58c1.878-7.155.79-14.69-2.901-20.159L53.813 24c4.054 5.994 5.252 14.22 3.208 22z"></path><path d="M41.036 42L39 41.421C40.962 33.63 45.852 27.151 52.077 24L53 26.004C47.315 28.876 42.85 34.854 41.036 42z"></path><path d="M51.373 24.955l1.526-5.799 2.09.561-1.525 5.799z"></path></g><ellipse cx="51.571" cy="28.75" fill="#196ADA" fill-opacity=".038" rx="28.571" ry="28.75"></ellipse><path fill="#FA0" fill-rule="nonzero" d="M19.407 72.557L18 71.263A35.95 35.95 0 0 1 44.123 60a35.95 35.95 0 0 1 26.124 11.263l-1.408 1.343A34.01 34.01 0 0 0 44.123 61.95a34.01 34.01 0 0 0-24.716 10.657v-.049z"></path><g fill="#196ADA" fill-rule="nonzero" transform="translate(6 4)"><circle cx="11.992" cy="11.992" r="7.821"></circle><path d="M11.992 3.128a.521.521 0 0 0 .521-.521V.52a.521.521 0 0 0-1.043 0v2.086c0 .288.234.521.522.521zm0 17.727a.521.521 0 0 0-.522.522v2.085a.521.521 0 0 0 1.043 0v-2.085a.521.521 0 0 0-.521-.522zm11.47-9.385h-2.085a.521.521 0 0 0 0 1.043h2.085a.521.521 0 0 0 0-1.043zm-20.334.522a.521.521 0 0 0-.521-.522H.52a.521.521 0 0 0 0 1.043h2.086a.521.521 0 0 0 .521-.521zm3.72-7.867a.521.521 0 0 0 .904-.521L6.709 1.798a.521.521 0 0 0-.903.521l1.042 1.806zm10.288 15.734a.521.521 0 0 0-.903.52l1.043 1.807a.521.521 0 0 0 .904-.521l-1.044-1.806zM20.12 7.82a.514.514 0 0 0 .26-.07l1.806-1.042a.521.521 0 1 0-.521-.902L19.858 6.85a.521.521 0 0 0 .261.973V7.82zM3.604 16.233l-1.806 1.043a.521.521 0 0 0 .521.903l1.806-1.043a.521.521 0 1 0-.521-.902v-.001zM1.798 6.708l1.806 1.043a.521.521 0 0 0 .52-.903L2.318 5.805a.521.521 0 1 0-.521.902v.001zm20.388 10.568l-1.806-1.043a.521.521 0 1 0-.521.902l1.806 1.043a.521.521 0 0 0 .521-.903zm-5.762-12.96a.522.522 0 0 0 .713-.19l1.043-1.807a.521.521 0 0 0-.903-.521l-1.043 1.806a.521.521 0 0 0 .19.712zM7.56 19.668a.521.521 0 0 0-.712.19l-1.043 1.807a.521.521 0 1 0 .904.521l1.043-1.806a.521.521 0 0 0-.192-.712z"></path></g></g></svg>
+      <h4 class="uk-card-title">Chúng tôi đã bảo vệ bạn</h4>
+      <p>Du lịch mà không cần quan tâm với sự hỗ trợ 24/7 và chính sách hủy linh hoạt</p>
+    </div>
+  </div>
+  <div >
+    <div class="uk-card uk-card-default uk-card-body cus-booking cus-card-home1" style="border-radius: 10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80"><g fill="none" fill-rule="evenodd"><ellipse cx="51.571" cy="28.75" fill="#196ADA" fill-opacity=".038" rx="28.571" ry="28.75"></ellipse><g fill-rule="nonzero"><path fill="#FA0" d="M45.853 16H20.147A4.154 4.154 0 0 0 16 20.152v53.696C16 76.138 17.86 78 20.147 78h25.706A4.154 4.154 0 0 0 50 73.848V20.152C50 17.862 48.14 16 45.853 16zm2.598 57.848a2.603 2.603 0 0 1-2.6 2.602H20.148a2.603 2.603 0 0 1-2.599-2.602v-7.003h30.903v7.003zm0-8.553H17.548V24.59h30.903v40.704zm0-42.254H17.548v-2.89a2.603 2.603 0 0 1 2.6-2.601h25.704a2.603 2.603 0 0 1 2.599 2.602v2.889z"></path><path fill="#F69E1D" d="M33 69c-1.654 0-3 1.346-3 3 0 1.655 1.346 3 3 3s3-1.346 3-3c0-1.655-1.346-3-3-3zm0 4.543c-.85 0-1.543-.692-1.543-1.543 0-.85.693-1.542 1.543-1.542s1.543.692 1.543 1.542c0 .85-.693 1.543-1.543 1.543z"></path></g><path fill="#196ADA" fill-rule="nonzero" d="M25 49c0 .9.4 1.7 1 2.2V53c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-1h8v1c0 .6.4 1 1 1h1c.6 0 1-.4 1-1v-1.8c.6-.5 1-1.3 1-2.2V39c0-3.5-3.6-4-8-4s-8 .5-8 4v10zm3.5 1c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm9 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm1.5-6H27v-5h12v5z"></path></g></svg>
+        <h4 class="uk-card-title">Mọi thứ trực tuyến</h4>
+        <p>Tìm, so sánh và đặt vé trực tuyến mà không có chi phí ẩn và nhận vé của bạn qua email</p>
+    </div>
+  </div>
+  <div>
+    <div class="uk-card uk-card-default uk-card-body cus-booking cus-card-home1" style="border-radius: 10px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80"><g fill="none" fill-rule="evenodd"><ellipse cx="28.571" cy="28.75" fill="#196ADA" fill-opacity=".038" rx="28.571" ry="28.75" transform="translate(23)"></ellipse><g fill="#FA0" fill-rule="nonzero"><path d="M68.127 40H55.45c-.643 0-1.163.461-1.163 1.032s.52 1.033 1.163 1.033h10.588l3.372 27.87H10.64l3.958-27.87h10.607c.643 0 1.163-.462 1.163-1.033 0-.57-.52-1.032-1.163-1.032h-12.66L8 72h64l-3.873-32z"></path><path d="M44.797 54.3c-.544.099-.89.556-.775 1.02.101.404.519.68.984.68.07 0 .141-.006.212-.019a27.39 27.39 0 0 1 1.899-.269c.552-.057.945-.487.875-.958-.068-.471-.567-.811-1.123-.746-.728.076-1.426.175-2.072.293zm5.204-.219c.022.516.466.919.998.919l.044-.001 2.002-.08c.552-.024.98-.473.954-1.002-.025-.53-.54-.944-1.045-.916l-1.997.08c-.552.022-.98.47-.956 1zm-15.763 5.11a29.87 29.87 0 0 1-1.737 1.056c-.51.287-.654.877-.323 1.32.21.28.564.433.923.433.206 0 .413-.05.598-.153a32.76 32.76 0 0 0 1.864-1.133c.484-.318.58-.915.216-1.336-.366-.416-1.054-.504-1.54-.187zm26.002-6.906c-.354.257-.812.443-1.406.57-.566.12-.93.694-.812 1.28.102.513.537.865 1.023.865.07 0 .14-.008.212-.023.88-.188 1.594-.49 2.189-.924l.14-.106c.46-.362.55-1.041.203-1.518a1.022 1.022 0 0 0-1.464-.21l-.086.066zm-42.272 7.983c.132-.535-.156-1.087-.64-1.231-.482-.15-.985.17-1.116.707A7.358 7.358 0 0 0 16 61.509c0 .197.01.394.026.59.049.516.443.901.905.901.03 0 .06-.002.093-.005.5-.057.864-.55.814-1.101a4.425 4.425 0 0 1-.012-.641c.015-.325.062-.658.142-.985zM60.13 45.045a6.49 6.49 0 0 0-2.398.165c-.535.136-.845.64-.694 1.125.125.402.528.665.966.665.092 0 .183-.01.274-.035a4.306 4.306 0 0 1 1.582-.11c.565.063 1.057-.285 1.13-.783.075-.5-.31-.96-.86-1.027zm1.954 5.648c-.149.532.121 1.098.602 1.262.09.03.18.045.269.045.39 0 .75-.278.87-.712A4.713 4.713 0 0 0 64 50.064c0-.473-.078-.946-.233-1.405-.175-.524-.703-.789-1.172-.596-.473.194-.713.775-.538 1.297.079.234.119.472.119.703l-.003.118c-.01.167-.04.335-.09.512zm-33.569 11.41c-.61.296-1.233.57-1.849.817-.536.213-.803.836-.596 1.391.16.426.554.689.973.689.125 0 .252-.023.375-.072a30.597 30.597 0 0 0 1.983-.875c.52-.252.745-.893.5-1.432a1.025 1.025 0 0 0-1.386-.518zM20.02 59a.879.879 0 0 0 .487-.151 2.18 2.18 0 0 1 .928-.358c.137-.02.278-.02.413.002.574.09 1.07-.387 1.143-1.065.074-.678-.319-1.3-.876-1.39a3.099 3.099 0 0 0-.907-.01 3.981 3.981 0 0 0-1.677.646c-.494.328-.676 1.079-.406 1.68.185.413.535.646.895.646zm-.269 7.84c.217.053.438.092.656.116.257.029.514.044.772.044.314 0 .629-.02.943-.058.55-.064.94-.532.87-1.044-.07-.512-.569-.873-1.12-.81-.406.048-.816.06-1.22.014a3.567 3.567 0 0 1-.396-.07c-.537-.134-1.084.169-1.224.669-.138.5.183 1.01.72 1.14z"></path></g><path d="M37 24a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm13 11.466a1.83 1.83 0 0 0-1.831-1.828h-6.191l-3.492-4.951.012-.084a3.59 3.59 0 0 0-.716-2.659 3.587 3.587 0 0 0-5.177-.542V24c0-.708-.575-1.284-1.286-1.284h-3.561c-.711 0-1.286.576-1.286 1.284v12.538c0 1.867 1.43 3.384 3.253 3.562l-.275.638-2.158 8.139-4.857 6.517a2.192 2.192 0 0 0 .45 3.07 2.195 2.195 0 0 0 3.074-.45l5.111-6.857c.168-.224.29-.478.362-.748l1.47-5.545 4.026 3.69-.55 8a2.194 2.194 0 0 0 2.195 2.345c1.145 0 2.11-.887 2.189-2.044l.622-9.053a2.192 2.192 0 0 0-.707-1.767l-4.158-3.812 1.265-8.18 1.748 2.476a1.83 1.83 0 0 0 1.496.776h6.409l.12 20.974a.732.732 0 0 0 1.465 0l-.12-21.131A1.826 1.826 0 0 0 50 35.466z" fill="#196ADA" fill-rule="nonzero"></path></g></svg>
+      <h4 class="uk-card-title">Được khách du lịch tin tưởng</h4>
+      <p>Xếp hạng trung bình 4,7 và hơn 500.000 khách du lịch đã đặt vé với iZiShip</p>
+    </div>
+  </div>
+</div>
+ 
+
+<!-- giới thiệu về lý sơn -->
+<hr class="uk-divider-icon"> 
+<article class="uk-article uk-align-center" style="font-family: 'Roboto',sans-serif; ">
+
+    <h1 class="uk-article-title" style="text-align: center;"> Giới thiệu tổng quan đảo Lý Sơn và du lịch Lý Sơn </h1>
+    <p class="uk-article-meta" style="text-align: center;">Các thông tin quan trọng cần biết trước khi tham quan du lịch đảo Lý Sơn - Madives của Việt Nam</p>
+
+    <div class="uk-panel cus-home-card">
+        <img class="uk-align-left uk-margin-remove-adjacent" style="width: 500px; height: 270px; border-radius: 10px;" src="/assets/images/lyson1.jpg"  alt="Đặt vé tàu lý sơn">
+        <p class="uk-text-lead"> Giới thiệu tổng quan đảo Lý Sơn và du lịch Lý Sơn </p>
+        <p>Lý Sơn là 1 huyện đảo thuộc tỉnh quảng Ngãi, đảo lý Sơn nằm cách đất liền 30 Hải Lý, các bạn có thể bắt tàu đi đảo Lý Sơn tại cảng Sa Kỳ, quảng Ngãi</p>
+        <p>Lý Sơn gồm 2 đảo: Đảo Lớn (Lý Sơn, hoặc gọi Cù Lao Ré), đảo Bé (cù lao Bờ Bãi) ở phía Bắc đảo Lớn, và hòn Mù Cu ở phía Đông của đảo Lớn.</p>
+        <p>Đảo Lý Sơn có rất nhiều danh lam thắng cảnh để tham quan checkin như là Cổng Tò Vò, Chùa Hang Chùa Đục, Đảo Bé, Cánh đồng tỏi,... Ngoài ra trên đảo còn nhiều bằng chứng về việc bảo tồn, giữ gìn biển đảo của các vua Hùng và nhà nước</p>
+    </div>
+
+    <div class="uk-panel cus-home-card">
+        <img class="uk-align-right uk-margin-remove-adjacent" style="width: 523px; height: 270px; border-radius: 10px;" src="/assets/images/lyson2.jpg"  alt="Đặt vé tàu lý sơn">
+        <p class="uk-text-lead"> Du lịch Lý Sơn vào mùa nào? Du lịch Lý Sơn khoảng bao lâu? </p>
+        <p>Tại đảo Lý Sơn có hai mùa rõ rệt là mùa mưa (thông thường kéo dài từ tháng 9 tới tháng 2 năm sau) và mùa khô (thường kéo dài từ tháng 3 tới tháng 8). Vì thế muốn đi du lịch đảo Lý Sơn các bạn nên đi vào giai đoạn từ tháng 3 đến tháng 9. Các bạn nên chú ý bão và mưa,...</p>
+        <p>Tại Lý Sơn có rất nhiều danh lam thắng cảnh và địa điểm checkin ngoài ra còn có rất nhiều đặc sản, Thông thường để du lịch hết đảo Lý Sơn các du khách thường đi 3 ngày 2 đêm, 2 ngày ở đảo lớn và 1 ngày ở đảo bé</p>
+    </div>
+
+    <div class="uk-panel">
+        <img class="uk-align-left uk-margin-remove-adjacent" style="width: 523px; height: 340px; border-radius: 10px;" src="/assets/images/lyson3.jpg"  alt="Đặt vé tàu lý sơn">
+        <p class="uk-text-lead"> Hướng dẫn di chuyển đến đảo Lý Sơn </p>
+        <p>Đảo Lý Sơn Nằm cách đất liền 30km, vì vậy để di chuyển ra đảo Lý Sơn chúng ta có thể lựa chọn các phương án sau đây để tiết kiệm chi phí và rẻ nhất có thể</p>
+        <p>Các bạn di chuyển bằng máy bay, xe buýt đường dài hoặc tàu hỏa đến các nhà ga và sân bay gần với tỉnh Quảng Ngãi. Các sân bay có thể di chuyển đến chính là sân bay Chu Lai, Sân Bay Đà Nẵng, Tp Đà Nẵng, Tp Hội An, Tp Quảng Ngãi.</p>
+        <p>Sau khi đến các nhà ga và sân bay gần với tỉnh Quảng Ngãi, các bạn thuê xe taxi, xe khách, xe buýt, hoặc đi ghép xe đến cảng Sa Kỳ tỉnh Quảng Ngãi</p>
+        <p>Các bạn checkin vé tàu và lên tàu đi từ cảng Sa Kỳ đến đảo Lý Sơn. Vì du lịch Lý Sơn đang rất được ưa chuộng, nên các bạn lưu ý nhớ đặt vé tàu trước khi đến cảng Sa Kỳ</p>
+    </div>
+  
+</article>
+
+<hr class="uk-divider-icon">
+ 
