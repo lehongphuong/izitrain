@@ -16,10 +16,21 @@ export class ListComponent implements OnInit {
   }
 
   /**
-   * onSelectClick
+   * onSelectClick in web
    */
-  onSelectClick(){ 
+  onSelectClickInWeb(){ 
     this.router.navigate([]).then(result => {  window.open('/detail', '_blank'); });
+  }
+
+  /**
+   * onSelectClick in mobile
+   */
+  onSelectClickInMobile(){ 
+    this.router.navigate(['/detail']);
+  }
+
+  onSearchClick(){
+    
   }
 
 }

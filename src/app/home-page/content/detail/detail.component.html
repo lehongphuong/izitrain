@@ -1,3 +1,503 @@
-<p>
-  detail works!
-</p>
+<!-- web -->
+<div class="uk-text-left" uk-grid style="margin-top: 20px">
+  <!-- header web -->
+  <div class="uk-width-1-4@m list-search-web">
+    <div>
+      <p class="uk-text-meta">HOME/ QUANGNGAI/ SAKY TO LYSON</p>
+      <p class="uk-text-small uk-text-emphasis uk-text-bolder">Cảng Sa Kỳ đến Đảo Lý Sơn</p>
+    </div>
+
+    <!-- info booking -->
+    <div class="uk-card uk-card-default uk-card-body"
+      style="border-radius: 10px; padding: 5px 0px 0px 20px; z-index: 980;" uk-sticky="offset: 103; bottom: #top">
+      <p class="uk-text-emphasis uk-text-bold" style="margin-top: 10px; margin-bottom: 0px;">Thông tin đặt vé:</p>
+      <hr>
+      <!-- Ngày đi -->
+      <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Ngày đi</p>
+      <div class="uk-width-expand@m uk-inline">
+        <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: calendar"></span>
+        <input class="uk-input" (click)="picker.open()" [min]="minDate" matInput style="padding-left: 40px; width: 93%;"
+          [matDatepicker]="picker" (focus)="picker.open()" placeholder="Chọn ngày đi" readonly>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </div>
+
+      <!-- Giờ đi -->
+      <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giờ đi</p>
+      <div class="uk-width-expand@m uk-inline">
+        <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: calendar"></span>
+        <mat-select [value]="0" class="uk-select" style="padding-left: 40px; width: 93%;" placeholder="Giờ đi">
+          <mat-option [value]="0">8:00</mat-option>
+          <mat-option [value]="1">8:30</mat-option>
+          <mat-option [value]="2">9:00</mat-option>
+        </mat-select>
+      </div>
+
+      <!-- Số lượng vé -->
+      <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Số lượng vé</p>
+      <div class="uk-width-expand@m uk-inline">
+        <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: users"></span>
+        <input matInput value="2" class="uk-select" style="padding-left: 40px; width: 93%;" placeholder="Số lượng vé">
+      </div>
+
+      <!-- giá tiền -->
+      <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giá tiền</p>
+      <div class="uk-width-expand@m uk-inline">
+        <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: credit-card"></span>
+        <input matInput [readonly]="'true'" value="165000" class="uk-select" style="padding-left: 40px; width: 93%;"
+          placeholder="Giá tiền">
+      </div>
+
+
+      <div class="uk-width-expand@m uk-inline uk-margin-center" style="margin: 20px">
+        <span class="uk-form-icon uk-margin-left" style="color: #1E87F0;" uk-icon="icon: cart"></span>
+        <button class="uk-button uk-button-primary uk-width-3-4" (click)="onBookingClick()"
+          style="border-radius: 20px; background-color: #FFAA00;">
+          Đặt Ngay</button>
+      </div>
+      <br>
+    </div>
+  </div>
+
+  <!-- list detail web-->
+  <div class="uk-width-expand@m list-search-web">
+    <!-- card -->
+    <div class="uk-width-expand@m" style="margin-bottom: 0;">
+      <div class="uk-card uk-card-default uk-card-body"
+        style="padding-bottom: 0; padding-top: 0px; margin-bottom: 20px; border-radius: 10px;">
+
+        <!-- row 1 -->
+        <div>
+          <tr>
+            <td>
+              <p class="uk-text-lead uk-text-bold" style="margin-bottom: 0px; margin-top: 10px;">Chín Nghĩa Express </p>
+            </td>
+            <td>
+              <p class="uk-text-uppercase uk-text-success"
+                style="color: #00c7a2; font-size: 11px; font-weight: bold; margin-top: 10px; margin-bottom: 0px; margin-left: 5px;">
+                Công Ty Chín Nghĩa</p>
+            </td>
+          </tr>
+
+          <p class="uk-text-uppercase"
+            style="font-size: 11px; font-weight: bold; margin-top: 10px; margin-bottom: 0px;">
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span style="margin-top: 1px;"> 10 lượt Đánh giá</span></p>
+        </div>
+
+        <!-- row 2 slide show -->
+        <div class="uk-position-relative uk-visible-toggle uk-light" style="margin-top: 20px;" tabindex="-1"
+          uk-slider="center: true">
+
+          <ul class="uk-slider-items uk-grid">
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img style="height: 400px" src="https://dulichlyson24h.com/wp-content/uploads/2019/02/1-131.jpg" alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1></h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img style="height: 400px"
+                  src="http://vietnamtourism.gov.vn/images/2019/CNMN/165Tau-sieu-toc-trieu-do-bat-dau-don-khach-tuyen-Ly-Son--Sa-Ky.jpg"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1></h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img style="height: 400px"
+                  src="https://znews-photo-fbcrawler.zadn.vn/w720/Uploaded/Sotntb/2019_05_14/Anh_1_tau_sieu_toc.jpg"
+                  alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1></h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img style="height: 400px"
+                  src="https://image.thanhnien.vn/660/uploaded/cudh/2019_02_16/taucaotoc_jggq.jpg" alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1></h1>
+                </div>
+              </div>
+            </li>
+            <li class="uk-width-3-4">
+              <div class="uk-panel">
+                <img style="height: 400px" src="http://content.baotnvn.vn/userfiles/user/luuhuong/01.jpg" alt="">
+                <div class="uk-position-center uk-panel">
+                  <h1></h1>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+            uk-slider-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+            uk-slider-item="next"></a>
+
+        </div>
+
+        <!-- row 3 detail schedule -->
+        <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: center;">CHI TIẾT LỊCH TRÌNH</p>
+          <p class="uk-text-secondary" style="text-align: left;">Cảng Sa Kỳ 🡆 Đảo Lý Sơn</p>
+          <table class="uk-table uk-table-divider">
+            <thead>
+              <tr>
+                <th>Giờ Đi</th>
+                <th>Giờ Đến</th>
+                <th>Thời Gian</th>
+                <th>Giá Tiền</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000 vnđ</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
+                    style="margin-top: 0;border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
+                    Chọn</button>
+                </td>
+              </tr>
+              <tr class="selected">
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000 vnđ</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
+                    style="border-radius: 20px; background-color: #196ADA; border-color: lightseagreen; color: #fff;">
+                    Chọn</button>
+                </td>
+              </tr>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000 vnđ</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
+                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
+                    Chọn</button>
+                </td>
+              </tr>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000 vnđ</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
+                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
+                    Chọn</button>
+                </td>
+              </tr>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000 vnđ</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
+                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
+                    Chọn</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- row 4 description -->
+        <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: center;">THÔNG TIN TÀU CHÍNH NGHĨA</p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc Chín Nghĩa Express là con tàu siêu tốc hiện đại nhất tính đến thời điểm hiện tại. Sau một thời
+            gian vận hành thử nghiệm, tàu siêu tốc đi Lý Sơn 2 thân đầu tiên chính thức đưa vào hoạt động vào đầu năm
+            2019. Nhằm phục vụ tuyến giao thông đường thủy Sa Kỳ – Lý Sơn (Quảng Ngãi).
+          </p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc 2 thân mang tên Chín Nghĩa Express 07 được đầu tư với tổng giá trị gần 20 tỷ đồng. Tàu có công
+            suất gần 2.100 CV, dài 27,5m, rộng gần 6,5m, cao 2,8m. Tàu có thể chở tối đa lên đến 168 hành khách.
+          </p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc Chín Nghĩa Express chạy với tốc độ 32 hải lý/giờ. Vì thế, với khoảng cách 15 hải lý từ Sa Kỳ đi
+            Lý Sơn du khách chỉ mất tầm 30 phút để di chuyển. Rút ngắn khoảng 25 – 30 phút so với tàu cao tốc.
+          </p>
+          <p class="uk-text-meta">
+            Đến thời điểm hiện tại, đây là tàu siêu tốc 2 thân duy nhất. Và cũng là chiếc tàu siêu tốc thứ 3 của công ty
+            Chín Nghĩa hoạt động vận tải ở tuyến trên, sau tàu Chín Nghĩa 03 và tàu Chín Nghĩa 05.
+          </p>
+        </div>
+
+        <!-- row 5 comment -->
+        <!-- <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: center;">ĐÁNH GIÁ VÀ NHẬN XÉT</p>
+
+
+        </div> -->
+
+
+        <hr class="uk-divider-icon" style="margin-bottom: 20px;">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- mobile -->
+<div class="uk-text-left list-search-mobile" uk-grid style="margin-top: 20px">
+  <!-- header mobile -->
+  <div class="uk-card uk-card-default uk-card-body"
+    style="border-radius: 10px; padding: 5px 0px 10px 20px; margin-bottom: 20px;">
+    <p class="uk-text-meta" style="margin-bottom: 10px;">HOME/ QUANGNGAI/ SAKY TO LYSON</p>
+    <p class="uk-text-small uk-text-emphasis uk-text-bolder" style="margin-top: 0; padding-top: 0;">Cảng Sa Kỳ đến Đảo
+      Lý Sơn</p>
+  </div>
+
+
+  <!-- booking -->
+  <div>
+    <!-- info booking -->
+    <div class="uk-card uk-card-default uk-card-body list-search-mobile"
+      style="padding: 5px 0px 0px 20px; z-index: 980; position: fixed;left: 0; bottom: 0; width:100%; box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%,0.2); ">
+
+      <div style="margin: 10px; text-align: center">
+        <div>
+          <span class="uk-text-lead uk-text-bold"
+            style="margin-bottom: 0px; margin-top: 10px; font-size: 17px; margin-right: 20px">
+            Tổng Tiền: 175,000vnđ</span>
+
+
+          <button class="uk-button uk-button-primary" href="#modal-full" uk-toggle
+            style="border-radius: 20px; background-color: #FFAA00;">
+            Đặt Ngay</button>
+
+          <div id="modal-full" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+              <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+              <div class="uk-grid-collapse uk-width-expand@m uk-flex-middle" uk-grid>
+
+                <div class="uk-card uk-card-default uk-card-body list-search-mobile"
+                  style="border-radius: 10px; padding-top:0px; padding-bottom: 0px; padding-left: 30px;">
+                  <p class="uk-text-lead"
+                    style="margin-top: 20px; margin-bottom: 0px; text-align: center; padding-left: 0;">
+                    Thông Tin Đặt Vé</p>
+                  <hr>
+                  <!-- Ngày đi -->
+                  <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Ngày đi</p>
+                  <div class="uk-width-expand@m uk-inline">
+                    <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
+                      uk-icon="icon: calendar"></span>
+                    <input class="uk-input" (click)="pickerMobile.open()" [min]="minDate" matInput
+                      style="padding-left: 40px; width: 100%;" [matDatepicker]="pickerMobile"
+                      (focus)="pickerMobile.open()" placeholder="Chọn ngày đi" readonly>
+                    <mat-datepicker touchUi #pickerMobile></mat-datepicker>
+                  </div>
+
+                  <!-- Giờ đi -->
+                  <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giờ đi</p>
+                  <div class="uk-width-expand@m uk-inline">
+                    <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
+                      uk-icon="icon: calendar"></span>
+                    <mat-select [value]="0" class="uk-select" style="padding-left: 40px; width: 100%;"
+                      placeholder="Giờ đi">
+                      <mat-option [value]="0">8:00</mat-option>
+                      <mat-option [value]="1">8:30</mat-option>
+                      <mat-option [value]="2">9:00</mat-option>
+                    </mat-select>
+                  </div>
+
+                  <!-- Số lượng vé -->
+                  <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Số lượng vé</p>
+                  <div class="uk-width-expand@m uk-inline">
+                    <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
+                      uk-icon="icon: users"></span>
+                    <input matInput value="2" class="uk-select" style="padding-left: 40px; width: 100%;"
+                      placeholder="Số lượng vé">
+                  </div>
+
+                  <!-- giá tiền -->
+                  <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giá tiền</p>
+                  <div class="uk-width-expand@m uk-inline">
+                    <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
+                      uk-icon="icon: credit-card"></span>
+                    <input matInput [readonly]="'true'" value="165000" class="uk-select"
+                      style="padding-left: 40px; width: 100%;" placeholder="Giá tiền">
+                  </div>
+
+
+                  <div class="uk-width-expand@m uk-inline uk-margin-center" style="margin: 20px">
+                    <span class="uk-form-icon uk-margin-left" style="color: #1E87F0;" uk-icon="icon: cart"></span>
+                    <button class="uk-button uk-button-primary uk-width-3-4" (click)="onBookingClick()"
+                      style="border-radius: 20px; background-color: #FFAA00;" uk-toggle="target: #modal-full">
+                      Đặt Ngay</button>
+                  </div>
+                  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- list detail mobile-->
+  <div class="uk-width-expand@m list-search-mobile">
+    <!-- card -->
+    <div class="uk-width-expand@m" style="margin-bottom: 0;">
+      <div class="uk-card uk-card-default uk-card-body"
+        style="padding-bottom: 0; padding-top: 0px; margin-bottom: 20px; border-radius: 10px;">
+
+        <!-- row 1 -->
+        <div>
+          <tr>
+            <td>
+              <p class="uk-text-lead uk-text-bold" style="margin-bottom: 0px; margin-top: 10px; font-size: 17px;">Chín
+                Nghĩa Express </p>
+            </td>
+            <td>
+              <p class="uk-text-uppercase uk-text-success"
+                style="color: #00c7a2; font-size: 11px; font-weight: bold; margin-top: 10px; margin-bottom: 0px; margin-left: 5px;">
+                Công Ty Chín Nghĩa</p>
+            </td>
+          </tr>
+
+          <p class="uk-text-uppercase"
+            style="font-size: 11px; font-weight: bold; margin-top: 10px; margin-bottom: 0px;">
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span uk-icon="star" style="color:#FFAA00;"></span>
+            <span style="margin-top: 1px;"> 10 Đánh giá</span></p>
+        </div>
+
+        <!-- row 2 slide show -->
+        <div class="uk-position-relative uk-visible-toggle uk-light" style="margin-top: 20px; padding:0" tabindex="-1"
+          uk-slideshow>
+          <ul class="uk-slideshow-items">
+            <li>
+              <img style="height: 500px" src="https://dulichlyson24h.com/wp-content/uploads/2019/02/1-131.jpg" alt=""
+                uk-cover>
+            </li>
+            <li>
+              <img style="height: 500px"
+                src="http://vietnamtourism.gov.vn/images/2019/CNMN/165Tau-sieu-toc-trieu-do-bat-dau-don-khach-tuyen-Ly-Son--Sa-Ky.jpg"
+                alt="" uk-cover>
+            </li>
+            <li>
+              <img style="height: 500px"
+                src="https://znews-photo-fbcrawler.zadn.vn/w720/Uploaded/Sotntb/2019_05_14/Anh_1_tau_sieu_toc.jpg"
+                alt="" uk-cover>
+            </li>
+          </ul>
+
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+            uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+            uk-slideshow-item="next"></a>
+
+        </div>
+
+
+        <!-- row 3 detail schedule -->
+        <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: left; font-size: 17px; margin-bottom: 10px;">CHI TIẾT
+            LỊCH TRÌNH</p>
+          <p class="uk-text-secondary" style="text-align: left;font-size: 13px; margin: 0;">Cảng Sa Kỳ 🡆 Đảo Lý Sơn</p>
+          <table class="uk-table uk-table-divider" style="font-size: 13px; margin-top: 0; padding-top: 0;">
+            <thead>
+              <tr>
+                <th>Giờ Đi</th>
+                <th>Giờ Đến</th>
+                <th>Thời Gian</th>
+                <th>Giá Tiền Vé</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 25%;">8:00</td>
+                <td style="width: 25%;">8:30</td>
+                <td style="width: 25%;">30 phút</td>
+                <td style="width: 25%;">170,000vnđ</td>
+              </tr>
+              <tr class="selected">
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000vnđ</td>
+              </tr>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000vnđ</td>
+              </tr>
+              <tr>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>30 phút</td>
+                <td>170,000vnđ</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- row 4 description -->
+        <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: center;">THÔNG TIN TÀU CHÍNH NGHĨA</p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc Chín Nghĩa Express là con tàu siêu tốc hiện đại nhất tính đến thời điểm hiện tại. Sau một thời
+            gian vận hành thử nghiệm, tàu siêu tốc đi Lý Sơn 2 thân đầu tiên chính thức đưa vào hoạt động vào đầu năm
+            2019. Nhằm phục vụ tuyến giao thông đường thủy Sa Kỳ – Lý Sơn (Quảng Ngãi).
+          </p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc 2 thân mang tên Chín Nghĩa Express 07 được đầu tư với tổng giá trị gần 20 tỷ đồng. Tàu có công
+            suất gần 2.100 CV, dài 27,5m, rộng gần 6,5m, cao 2,8m. Tàu có thể chở tối đa lên đến 168 hành khách.
+          </p>
+          <p class="uk-text-meta">
+            Tàu siêu tốc Chín Nghĩa Express chạy với tốc độ 32 hải lý/giờ. Vì thế, với khoảng cách 15 hải lý từ Sa Kỳ đi
+            Lý Sơn du khách chỉ mất tầm 30 phút để di chuyển. Rút ngắn khoảng 25 – 30 phút so với tàu cao tốc.
+          </p>
+          <p class="uk-text-meta">
+            Đến thời điểm hiện tại, đây là tàu siêu tốc 2 thân duy nhất. Và cũng là chiếc tàu siêu tốc thứ 3 của công ty
+            Chín Nghĩa hoạt động vận tải ở tuyến trên, sau tàu Chín Nghĩa 03 và tàu Chín Nghĩa 05.
+          </p>
+        </div>
+
+        <!-- row 5 comment -->
+        <!-- <div style="margin-top: 20px;">
+          <p class="uk-text-lead uk-text-bold" style="text-align: center;">ĐÁNH GIÁ VÀ NHẬN XÉT</p>
+
+
+        </div> -->
+
+
+        <hr class="uk-divider-icon" style="margin-bottom: 20px;">
+
+      </div>
+    </div>
+  </div>
+</div>

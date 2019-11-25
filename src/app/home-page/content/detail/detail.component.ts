@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  minDate = new Date();
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+  /**
+   * onSelectClick in web
+   */
+  onSelectClickInWeb() {
+    this.router.navigate([]).then(result => { window.open('/detail', '_blank'); });
+  }
+
+  /**
+   * onSelectClick in mobile
+   */
+  onSelectClickInMobile() {
+    this.router.navigate(['/detail']);
+  }
+
+  /**
+   * on Booking Click
+   */
+  onBookingClick() {
+    this.router.navigate(['/booking']);
+  }
+
+  /**
+   * on Booking Click
+   */
+  onSelectClick() {
+    this.router.navigate(['/booking']);
+  } 
 
 }

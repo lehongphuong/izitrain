@@ -4,6 +4,14 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailComponent } from './detail.component';
+import {
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatInputModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [DetailComponent],
@@ -18,6 +26,13 @@ import { DetailComponent } from './detail.component';
     ]),
     FormsModule,
     ReactiveFormsModule,
+
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule
   ]
 })
 export class DetailModule { }

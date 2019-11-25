@@ -4,6 +4,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingComponent } from './booking.component';
+import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule } from '@angular/material';
 
 @NgModule({
   declarations: [BookingComponent],
@@ -18,6 +19,12 @@ import { BookingComponent } from './booking.component';
     ]),
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatInputModule
+
   ]
 })
 export class BookingModule { }
