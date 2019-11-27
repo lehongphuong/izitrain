@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../common/api-service/api.service';
 
 @Component({
   selector: 'app-detail',
@@ -10,37 +11,24 @@ export class DetailComponent implements OnInit {
 
   minDate = new Date();
 
-  constructor(private router: Router) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
   }
 
-  /**
-   * onSelectClick in web
-   */
-  onSelectClickInWeb() {
-    this.router.navigate([]).then(result => { window.open('/detail', '_blank'); });
-  }
-
-  /**
-   * onSelectClick in mobile
-   */
-  onSelectClickInMobile() {
-    this.router.navigate(['/detail']);
-  }
 
   /**
    * on Booking Click
    */
   onBookingClick() {
-    this.router.navigate(['/booking']);
+    this.api.navigate('/booking');
   }
 
   /**
    * on Booking Click
    */
   onSelectClick() {
-    this.router.navigate(['/booking']);
-  } 
+    this.api.navigate('/booking');
+  }
 
 }

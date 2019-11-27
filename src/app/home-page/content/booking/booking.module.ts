@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingComponent } from './booking.component';
 import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule } from '@angular/material';
+import { ApiService } from '../../../common/api-service/api.service';
 
 @NgModule({
   declarations: [BookingComponent],
@@ -19,12 +20,10 @@ import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModu
     ]),
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatExpansionModule,
     MatInputModule
 
-  ]
+  ],
+  providers: [ApiService]
 })
 export class BookingModule { }

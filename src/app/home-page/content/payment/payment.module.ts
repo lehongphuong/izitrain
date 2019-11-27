@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PaymentComponent } from './payment.component'; 
+import { PaymentComponent } from './payment.component';
 
-import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule } from '@angular/material';
-import { PaymeComponent } from '../payme/payme.component';
+import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule, MatRadioModule } from '@angular/material';
+import { ApiService } from '../../../common/api-service/api.service';
 
 @NgModule({
-  declarations: [PaymentComponent, PaymeComponent],
+  declarations: [PaymentComponent],
   imports: [
     TransferHttpCacheModule,
     CommonModule,
@@ -26,8 +26,9 @@ import { PaymeComponent } from '../payme/payme.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
-    MatInputModule, 
-     
-  ]
+    MatInputModule,
+    MatRadioModule,
+  ],
+  providers: [ApiService]
 })
 export class PaymentModule { }

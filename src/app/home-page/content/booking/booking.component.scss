@@ -12,3 +12,19 @@
 td {
   padding-right: 8px;
 } 
+
+.list-search-mobile{
+  display: none;
+} 
+
+// mobile
+@media only screen and (max-width: 600px) {
+  .list-search-mobile{
+      display: unset;
+  }
+
+  .list-search-web {
+      display: none;
+  }
+ 
+}

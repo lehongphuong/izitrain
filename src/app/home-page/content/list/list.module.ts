@@ -11,6 +11,7 @@ import {
   MatExpansionModule,
   MatIconModule
 } from '@angular/material';
+import { ApiService } from '../../../common/api-service/api.service';
 
 @NgModule({
   declarations: [ListComponent],
@@ -32,6 +33,7 @@ import {
     MatExpansionModule,
     MatIconModule
 
-  ]
+  ],
+  providers: [ApiService]
 })
 export class ListModule { }

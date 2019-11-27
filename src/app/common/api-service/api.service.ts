@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ApiService {
@@ -11,6 +12,7 @@ export class ApiService {
   getAllWhatUrl = "http://localhost:8081/new/izicar/api/selectAllByWhat.php";
 
   constructor(private http: Http,
+    private router: Router
   ) {
   }
 
@@ -43,5 +45,16 @@ export class ApiService {
 
     return this.http.post(url, param, options).pipe(map((response: Response) => response.json()));
   }
+
+  /**
+   * 
+   */
+  navigate(url: any) {
+    this.router.navigate([url]);
+    // this.router.navigateByUrl(url);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
+
 }
 

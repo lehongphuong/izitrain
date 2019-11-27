@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../common/api-service/api.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -13,11 +12,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.scss']
+  selector: 'app-confirm',
+  templateUrl: './confirm.component.html',
+  styleUrls: ['./confirm.component.scss']
 })
-export class BookingComponent implements OnInit {
+export class ConfirmComponent implements OnInit {
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -28,7 +27,7 @@ export class BookingComponent implements OnInit {
 
   minDate = new Date();
 
-  constructor(private api: ApiService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,7 +36,7 @@ export class BookingComponent implements OnInit {
    * onPaymentClick
    */
   onPaymentClick() {
-    this.api.navigate('/payment');
+    this.router.navigate(['/payment']);
   }
 
 }

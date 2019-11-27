@@ -1,14 +1,40 @@
 
 .example-form {
-    // min-width: 150px;
-    // max-width: 500px;
-    width: 100%; 
-  }
+  // min-width: 150px;
+  // max-width: 500px;
+  width: 100%; 
+}
     
-  .example-full-width {
-    width: 100%;
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+} 
+ 
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+  
+.example-radio-button {
+  margin: 5px;
+}
+
+.list-search-mobile{
+  display: none;
+} 
+
+// mobile
+@media only screen and (max-width: 600px) {
+  .list-search-mobile{
+      display: unset;
+  }
+
+  .list-search-web {
+      display: none;
   }
   
-  td {
-    padding-right: 8px;
-  } 
+}

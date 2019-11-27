@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../common/api-service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,13 @@ export class HomeComponent implements OnInit {
 
   minDate = new Date();
 
-  constructor(private router: Router) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
   }
 
   onSearchClick() {
-    this.router.navigateByUrl('/list');
+    this.api.navigate('/list');
   }
 
 }

@@ -6,6 +6,9 @@ import {AppComponent} from './app.component';
 import {TransferHttpCacheModule} from '@nguniversal/common';
 import { HomePageModule } from './home-page/home-page.module'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common'; 
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router'; 
  
 @NgModule({
   declarations: [
@@ -15,10 +18,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule.withServerTransition({appId: 'my-app'}),
     RouterModule.forRoot([
       { path: '', loadChildren: './home-page/home-page.module#HomePageModule'}, 
-    ]),
+    ]), 
+    LoadingBarRouterModule,
+
     TransferHttpCacheModule,
-    HomePageModule,
+    HttpModule,
     BrowserAnimationsModule,
+    CommonModule, 
+    
+    HomePageModule, 
+    
+    
  
   ],
   providers: [],

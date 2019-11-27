@@ -1,20 +1,35 @@
-<div class="uk-flex-middle" style="padding-top: 20px;" uk-grid>
+<!-- web -->
+<div class="uk-flex-middle list-search-web" style="padding-top: 20px;" uk-grid>
   <div class="uk-width-1-3@m uk-flex-first">
     <a routerLink="/booking"><span uk-icon="chevron-left"></span>Quay lại</a>
   </div>
   <div class="uk-width-2-3@m">
-    <span class="uk-text-emphasis" style="margin-right: 10px;">1. Thông tin Khách Hàng</span>
-    <span class="uk-text-muted" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 2. Thành Toán</span>
+    <span class="uk-text-muted" style="margin-right: 10px;">1. Thông tin Khách Hàng</span>
+    <span class="uk-text-emphasis" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 2. Thành
+      Toán</span>
     <span class="uk-text-muted" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 3. Xác Nhận</span>
   </div>
 </div>
+
+
+<!-- mobile -->
+<div class="uk-flex-middle list-search-mobile" uk-grid>
+  <div style="font-size: 14px; padding-top: 20px;">
+    <span class="uk-text-muted" style="margin-right: 10px;">1. Thông Tin</span>
+    <span class="uk-text-emphasis" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 2. Thanh
+      Toán</span>
+    <span class="uk-text-muted" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 3. Xác Nhận</span>
+  </div>
+</div>
+
 
 <!-- passenger detail -->
 <div class="uk-align-center">
   <div class="uk-flex-top" style="padding-top: 20px;" uk-grid>
     <div class="uk-width-1-3@m uk-flex-first">
       <!--  begin detail payment -->
-      <div class="uk-card uk-card-default uk-card-body" style="border-radius: 10px; padding: 5px 0px 0px 20px;">
+      <div class="uk-card uk-card-default uk-card-body list-search-web"
+        style="border-radius: 10px; padding: 5px 0px 0px 20px;">
         <p class="uk-text-emphasis uk-text-bold uk-text-uppercase" style="margin-top: 10px; margin-bottom: 0px;">
           Thông tin đặt vé</p>
         <hr>
@@ -47,6 +62,60 @@
       </div>
       <!--  end detail payment -->
 
+      <!-- info mobile -->
+      <mat-accordion class="uk-width-1-3@m list-search-mobile" style="margin-top: 0px;">
+        <mat-expansion-panel class="uk-card uk-card-default uk-card-body cus-top-search"
+          style="border-radius: 10px; margin-top: 0; margin-bottom: 0;padding:0; padding-top: 10px; padding-bottom: 10px;">
+          <mat-expansion-panel-header>
+            <tr>
+              <td>
+                <p class="uk-text-emphasis uk-text-bold uk-text-uppercase" style="margin-bottom: 0px;">
+                  Thông tin chi tiết</p>
+              </td>
+              <td>
+                <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span> 320,000vnđ
+              </td>
+            </tr>
+          </mat-expansion-panel-header>
+
+          <!--  begin detail payment -->
+          <div style="border-radius: 10px; padding: 5px 0px 0px 20px;">
+            <!-- Ngày đi -->
+            <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+              Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+            <span class="uk-text-primary" uk-icon="info"></span>
+            <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN
+              PHÍ
+              HỦY VÉ</a>
+            <hr>
+            <!-- Giờ đi -->
+            <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
+              Khởi hành:
+              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
+              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+            <hr>
+
+            <!-- Số lượng vé -->
+            <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
+              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+            </p>
+
+            <!-- giá tiền -->
+            <p class="uk-text-uppercase uk-text-danger"
+              style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
+              Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
+              320,000vnđ
+            </p>
+
+            <br>
+          </div>
+          <!--  end detail payment -->
+
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
     </div>
     <div class="uk-width-2-3@m">
       <!-- begin input -->
@@ -55,7 +124,85 @@
         <div class="uk-align-center">
           <!-- begin payment -->
 
-          <app-payme></app-payme> 
+          <table class="example-full-width" cellspacing="0">
+            <!-- begin promotion web -->
+            <tr class="list-search-web">
+              <td>
+                <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">Áp dụng mã giảm giá</p>
+              </td>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput #postalCode placeholder="Mã giảm giá" value="94043">
+                </mat-form-field>
+              </td>
+              <td>
+                <button class="uk-button uk-button-primary uk-width-3-4" (click)="onPromotionClick()"
+                  style="border-radius: 20px; background-color: #FFAA00;">
+                  Áp dụng</button>
+              </td>
+            </tr>
+            <!-- end promotion web -->
+
+            <!-- begin promotion mobile -->
+            <tr class="list-search-mobile">
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput #postalCode placeholder="Mã giảm giá" value="94043">
+                </mat-form-field>
+
+                <div class="uk-width-expand@m uk-inline uk-margin-center"
+                  style="text-align: center; margin-top: 0; margin-bottom: 20px;">
+                  <button class="uk-button uk-button-primary" (click)="onConfirmClick()"
+                    style="border-radius: 20px; background-color: #FFAA00;">
+                    Áp dụng</button>
+                </div>
+              </td>
+            </tr>
+            <!-- end promotion mobile -->
+
+          </table>
+
+          <div class="uk-width-expand@m uk-inline uk-margin-center"
+            style="text-align: center; margin-top: 0; margin-bottom: 0;">
+            <label id="example-radio-group-label" class="uk-text-emphasis uk-text-bold uk-text-uppercase"
+              style="margin-top: 10px; margin-bottom: 0px;">Chọn hình thức thanh toán</label>
+          </div> 
+
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="paymentWith" style="margin-top: 0;">
+            <mat-radio-button class="example-radio-button" [value]="'0'">
+              <p class="uk-text-emphasis">Thanh Toán Với Paypal</p>
+            </mat-radio-button>
+            <!-- PayPal Logo -->
+            <table border="0" cellpadding="10" cellspacing="0" align="center">
+              <tr>
+                <td align="center"><a title="How PayPal Works"><img
+                      src="https://www.paypalobjects.com/webstatic/mktg/logo/PP_AcceptanceMarkTray-NoDiscover_243x40.png"
+                      alt="Buy now with PayPal" /></a>
+                  <div id="paypal-button-container" style="margin-top: 10px;"></div>
+                </td>
+              </tr>
+            </table>
+            <!-- PayPal Logo -->
+
+            <mat-radio-button class="example-radio-button" [value]="'1'">
+              <p class="uk-text-emphasis">Thanh Toán Nhận Vé Tại Cảng</p>
+            </mat-radio-button>
+
+            <div *ngIf="paymentWith == '1'" class="uk-width-expand@m uk-inline uk-margin-center"
+              style="text-align: center; margin-top: 0; margin-bottom: 0;">
+              <button class="uk-button uk-button-primary" (click)="onConfirmClick()"
+                style="border-radius: 20px; background-color: #FFAA00;">
+                Xác Nhận</button>
+            </div>
+
+          </mat-radio-group>
+
+
+
+
+
+
 
           <!-- end payment -->
         </div>

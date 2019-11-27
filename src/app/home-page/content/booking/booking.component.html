@@ -1,4 +1,5 @@
-<div class="uk-flex-middle" style="padding-top: 20px;" uk-grid>
+<!-- web -->
+<div class="uk-flex-middle list-search-web" style="padding-top: 20px;" uk-grid>
   <div class="uk-width-1-3@m uk-flex-first">
     <a routerLink="/detail"><span uk-icon="chevron-left"></span>Quay lại</a>
   </div>
@@ -9,6 +10,17 @@
   </div>
 </div>
 
+
+<!-- mobile -->
+<div class="uk-flex-middle list-search-mobile" uk-grid>
+  <div style="font-size: 14px; padding-top: 20px;">
+    <span class="uk-text-emphasis" style="margin-right: 10px;">1. Thông Tin</span>
+    <span class="uk-text-muted" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 2. Thanh Toán</span>
+    <span class="uk-text-muted" style="margin-right: 10px;"><span uk-icon="chevron-right"></span> 3. Xác Nhận</span>
+  </div>
+</div>
+
+
 <!-- passenger detail -->
 <div class="uk-align-center">
   <p class="uk-text-lead uk-text-uppercase" style="margin-bottom: 0px; margin-top: 10px; text-align: center;">Thông Tin
@@ -18,7 +30,8 @@
   <div class="uk-flex-top" style="padding-top: 20px;" uk-grid>
     <div class="uk-width-1-3@m uk-flex-first">
       <!--  begin detail payment -->
-      <div class="uk-card uk-card-default uk-card-body" style="border-radius: 10px; padding: 5px 0px 0px 20px;">
+      <div class="uk-card uk-card-default uk-card-body list-search-web"
+        style="border-radius: 10px; padding: 5px 0px 0px 20px;">
         <p class="uk-text-emphasis uk-text-bold uk-text-uppercase" style="margin-top: 10px; margin-bottom: 0px;">
           Thông tin đặt vé</p>
         <hr>
@@ -51,18 +64,76 @@
       </div>
       <!--  end detail payment -->
 
+
+      <!-- info mobile -->
+      <mat-accordion class="uk-width-1-3@m list-search-mobile" style="margin-top: 0px;">
+        <mat-expansion-panel class="uk-card uk-card-default uk-card-body cus-top-search"
+          style="border-radius: 10px; margin-top: 0; margin-bottom: 0;padding:0; padding-top: 10px; padding-bottom: 10px;">
+          <mat-expansion-panel-header>
+            <tr>
+              <td>
+                <p class="uk-text-emphasis uk-text-bold uk-text-uppercase" style="margin-bottom: 0px;">
+                  Thông tin chi tiết</p>
+              </td>
+              <td>
+                <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span> 320,000vnđ
+              </td>
+            </tr>
+          </mat-expansion-panel-header>
+
+          <!--  begin detail payment -->
+          <div style="border-radius: 10px; padding: 5px 0px 0px 20px;">
+            <!-- Ngày đi -->
+            <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+              Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+            <span class="uk-text-primary" uk-icon="info"></span>
+            <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN
+              PHÍ
+              HỦY VÉ</a>
+            <hr>
+            <!-- Giờ đi -->
+            <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
+              Khởi hành:
+              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
+              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+            <hr>
+
+            <!-- Số lượng vé -->
+            <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
+              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+            </p>
+
+            <!-- giá tiền -->
+            <p class="uk-text-uppercase uk-text-danger"
+              style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
+              Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
+              320,000vnđ
+            </p>
+
+            <br>
+          </div>
+          <!--  end detail payment -->
+
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
     </div>
     <div class="uk-width-2-3@m">
       <!-- begin input -->
-      <div class="uk-card uk-card-default uk-card-body" style="border-radius: 10px; margin-top: 0; margin-bottom: 0; padding-bottom: 20px; padding-top: 10px;">
-        <div class="uk-align-center" >
+      <div class="uk-card uk-card-default uk-card-body"
+        style="border-radius: 10px; margin-top: 0; margin-bottom: 0; padding-bottom: 20px; padding-top: 10px;">
+        <div class="uk-align-center">
           <form class="example-form">
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Họ Và Tên">
             </mat-form-field>
 
             <table class="example-full-width" cellspacing="0">
-              <tr>
+
+              <!-- input web -->
+              <tr class="list-search-web">
                 <td>
                   <mat-form-field class="example-full-width">
                     <input matInput #cmnd maxlength="9" placeholder="CMND">
@@ -75,6 +146,20 @@
                   </mat-form-field>
                 </td>
               </tr>
+
+              <!-- input mobile -->
+              <tr class="list-search-mobile" style="margin-bottom: 0; padding-bottom: 0;">
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput #cmnd maxlength="9" placeholder="CMND">
+                    <mat-hint align="end">{{cmnd.value.length}} / 9</mat-hint>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Số điện thoại">
+                  </mat-form-field>
+                </td>
+              </tr>
+
             </table>
 
             <p>
