@@ -34,8 +34,12 @@
           Thông tin đặt vé</p>
         <hr>
         <!-- Ngày đi -->
-        <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+        <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+          style="margin-top: 0; margin-bottom: 0;">
           Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+        <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+          style="margin-top: 0; margin-bottom: 0;">
+          Đảo Lý Sơn đi Cảng Sa Kỳ </p>
         <span class="uk-text-primary" uk-icon="info"></span>
         <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN PHÍ
           HỦY VÉ</a>
@@ -43,19 +47,22 @@
         <!-- Giờ đi -->
         <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
           Khởi hành:
-          <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
-          <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+          <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> {{start_date}}
+          <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> {{tripBook.start_time_train}}
+        </p>
         <hr>
 
         <!-- Số lượng vé -->
         <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
-          Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+          Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> {{numberTicket}}
+          Vé
         </p>
 
         <!-- giá tiền -->
         <p class="uk-text-uppercase uk-text-danger"
           style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
-          Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span> 320,000vnđ
+          Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
+          {{totalPrice | currency:'VND'}}
         </p>
 
         <br>
@@ -81,8 +88,12 @@
           <!--  begin detail payment -->
           <div style="border-radius: 10px; padding: 5px 0px 0px 20px;">
             <!-- Ngày đi -->
-            <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+            <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+              style="margin-top: 0; margin-bottom: 0;">
               Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+            <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+              style="margin-top: 0; margin-bottom: 0;">
+              Đảo Lý Sơn đi Cảng Sa Kỳ</p>
             <span class="uk-text-primary" uk-icon="info"></span>
             <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN
               PHÍ
@@ -91,20 +102,22 @@
             <!-- Giờ đi -->
             <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
               Khởi hành:
-              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
-              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> {{start_date}}
+              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span>
+              {{tripBook.start_time_train}}</p>
             <hr>
 
             <!-- Số lượng vé -->
             <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
-              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span>
+              {{numberTicket}} Vé
             </p>
 
             <!-- giá tiền -->
             <p class="uk-text-uppercase uk-text-danger"
               style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
               Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
-              320,000vnđ
+              {{totalPrice | currency:'VND'}}
             </p>
 
             <br>
@@ -132,7 +145,7 @@
               </td>
               <td>
                 <mat-form-field class="example-full-width">
-                  <input matInput #postalCode placeholder="Mã giảm giá" value="94043">
+                  <input matInput [(ngModel)]="coupon" placeholder="Mã giảm giá">
                 </mat-form-field>
               </td>
               <td>
@@ -152,7 +165,7 @@
 
                 <div class="uk-width-expand@m uk-inline uk-margin-center"
                   style="text-align: center; margin-top: 0; margin-bottom: 20px;">
-                  <button class="uk-button uk-button-primary" (click)="onConfirmClick()"
+                  <button class="uk-button uk-button-primary" (click)="onPromotionClick()"
                     style="border-radius: 20px; background-color: #FFAA00;">
                     Áp dụng</button>
                 </div>
@@ -166,7 +179,7 @@
             style="text-align: center; margin-top: 0; margin-bottom: 0;">
             <label id="example-radio-group-label" class="uk-text-emphasis uk-text-bold uk-text-uppercase"
               style="margin-top: 10px; margin-bottom: 0px;">Chọn hình thức thanh toán</label>
-          </div> 
+          </div>
 
           <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
             [(ngModel)]="paymentWith" style="margin-top: 0;">
@@ -186,24 +199,25 @@
             <!-- PayPal Logo -->
 
             <mat-radio-button class="example-radio-button" [value]="'1'">
-              <p class="uk-text-emphasis">Thanh Toán Nhận Vé Tại Cảng</p>
+              <p class="uk-text-emphasis">Thanh toán tại cảng</p>
             </mat-radio-button>
 
-            <div *ngIf="paymentWith == '1'" class="uk-width-expand@m uk-inline uk-margin-center"
+            <mat-radio-button class="example-radio-button" [value]="'2'">
+              <p class="uk-text-emphasis">Chuyễn khoản ngân hàng</p>
+            </mat-radio-button>
+
+            <mat-radio-button class="example-radio-button" [value]="'3'">
+              <p class="uk-text-emphasis">Thanh toán ví MOMO</p>
+            </mat-radio-button>
+
+            <div *ngIf="paymentWith == '1' || paymentWith == '2' || paymentWith == '3' " class="uk-width-expand@m uk-inline uk-margin-center"
               style="text-align: center; margin-top: 0; margin-bottom: 0;">
-              <button class="uk-button uk-button-primary" (click)="onConfirmClick()"
+              <button class="uk-button uk-button-primary" (click)="onConfirmClick(false)"
                 style="border-radius: 20px; background-color: #FFAA00;">
                 Xác Nhận</button>
             </div>
 
-          </mat-radio-group>
-
-
-
-
-
-
-
+          </mat-radio-group> 
           <!-- end payment -->
         </div>
       </div>

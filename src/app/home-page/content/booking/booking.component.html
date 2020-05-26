@@ -36,8 +36,12 @@
           Thông tin đặt vé</p>
         <hr>
         <!-- Ngày đi -->
-        <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+        <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+          style="margin-top: 0; margin-bottom: 0;">
           Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+        <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+          style="margin-top: 0; margin-bottom: 0;">
+          Đảo Lý Sơn đi Cảng Sa Kỳ </p>
         <span class="uk-text-primary" uk-icon="info"></span>
         <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN PHÍ
           HỦY VÉ</a>
@@ -45,19 +49,22 @@
         <!-- Giờ đi -->
         <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
           Khởi hành:
-          <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
-          <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+          <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> {{start_date}}
+          <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> {{tripBook.start_time_train}}
+        </p>
         <hr>
 
         <!-- Số lượng vé -->
         <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
-          Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+          Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> {{numberTicket}}
+          Vé
         </p>
 
         <!-- giá tiền -->
         <p class="uk-text-uppercase uk-text-danger"
           style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
-          Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span> 320,000vnđ
+          Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
+          {{totalPrice | currency:'VND'}}
         </p>
 
         <br>
@@ -84,8 +91,13 @@
           <!--  begin detail payment -->
           <div style="border-radius: 10px; padding: 5px 0px 0px 20px;">
             <!-- Ngày đi -->
-            <p class="uk-text-emphasis uk-text-uppercase uk-text-success" style="margin-top: 0; margin-bottom: 0;">
+            <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+              style="margin-top: 0; margin-bottom: 0;">
               Cảng Sa Kỳ đi Đảo Lý Sơn</p>
+            <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-emphasis uk-text-uppercase uk-text-success"
+              style="margin-top: 0; margin-bottom: 0;">
+              Đảo Lý Sơn đi Cảng Sa Kỳ</p>
+
             <span class="uk-text-primary" uk-icon="info"></span>
             <a class="uk-text-emphasis uk-text-primary" style="margin-top: 10px; padding-top: 0; font-size: 13px;"> MIỄN
               PHÍ
@@ -94,20 +106,22 @@
             <!-- Giờ đi -->
             <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;">
               Khởi hành:
-              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> 12/12/2019
-              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span> 14:30</p>
+              <span class="uk-text-success" uk-icon="calendar" style="margin-left: 10px;"></span> {{start_date}}
+              <span class="uk-text-success" uk-icon="clock" style="margin-left: 10px;"></span>
+              {{tripBook.start_time_train}}</p>
             <hr>
 
             <!-- Số lượng vé -->
             <p class="uk-text-uppercase" style="font-size: 14px; font-weight: normal;margin-top: 0; margin-bottom: 0;">
-              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span> 2 Vé
+              Số vé: <span class="uk-text-success" uk-icon="file-text" style="margin-left: 10px;"></span>
+              {{numberTicket}} Vé
             </p>
 
             <!-- giá tiền -->
             <p class="uk-text-uppercase uk-text-danger"
               style="font-size: 14px; font-weight: normal; margin-bottom: 0; margin-top: 10px;">
               Tổng tiền: <span class="uk-text-danger" uk-icon="credit-card" style="margin-left: 10px;"></span>
-              320,000vnđ
+              {{totalPrice | currency:'VND'}}
             </p>
 
             <br>
@@ -127,22 +141,41 @@
         <div class="uk-align-center">
           <form class="example-form">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Họ Và Tên">
+              <input [(ngModel)]="userModel.name" matInput [formControl]="nameFormControl" [errorStateMatcher]="matcher"
+                placeholder="Họ Và Tên">
+              <mat-error *ngIf="nameFormControl.hasError('required')">
+                Họ và tên là <strong>bắt buộc</strong>
+              </mat-error>
             </mat-form-field>
 
+            <!-- cmnd, phone -->
             <table class="example-full-width" cellspacing="0">
 
               <!-- input web -->
               <tr class="list-search-web">
                 <td>
                   <mat-form-field class="example-full-width">
-                    <input matInput #cmnd maxlength="9" placeholder="CMND">
+                    <input [(ngModel)]="userModel.cmnd" [formControl]="cmndFormControl" [errorStateMatcher]="matcher"
+                      matInput #cmnd maxlength="9" placeholder="CMND">
                     <mat-hint align="end">{{cmnd.value.length}} / 9</mat-hint>
+                    <mat-error *ngIf="cmndFormControl.hasError('required')">
+                      CMND <strong>bắt buộc</strong>
+                    </mat-error>
+                    <mat-error *ngIf="cmndFormControl.hasError('pattern')">
+                      CMND <strong>phải đủ 9 số</strong>
+                    </mat-error>
                   </mat-form-field>
                 </td>
                 <td>
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Số điện thoại">
+                    <input [(ngModel)]="userModel.phone" matInput [formControl]="phoneFormControl"
+                      [errorStateMatcher]="matcher" placeholder="Số điện thoại">
+                    <mat-error *ngIf="phoneFormControl.hasError('required')">
+                      Số điện thoại là <strong>bắt buộc</strong>
+                    </mat-error>
+                    <mat-error *ngIf="phoneFormControl.hasError('pattern')">
+                      Số điện thoại phải là <strong>số</strong>
+                    </mat-error>
                   </mat-form-field>
                 </td>
               </tr>
@@ -151,11 +184,84 @@
               <tr class="list-search-mobile" style="margin-bottom: 0; padding-bottom: 0;">
                 <td>
                   <mat-form-field class="example-full-width">
-                    <input matInput #cmnd maxlength="9" placeholder="CMND">
+                    <input [(ngModel)]="userModel.cmnd" [formControl]="cmndFormControl" [errorStateMatcher]="matcher"
+                      matInput #cmnd maxlength="9" placeholder="CMND">
                     <mat-hint align="end">{{cmnd.value.length}} / 9</mat-hint>
+                    <mat-error *ngIf="cmndFormControl.hasError('required')">
+                      CMND <strong>bắt buộc</strong>
+                    </mat-error>
+                    <mat-error *ngIf="cmndFormControl.hasError('pattern')">
+                      CMND <strong>phải đủ 9 số</strong>
+                    </mat-error>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <input matInput type="number" placeholder="Số điện thoại">
+                    <input [(ngModel)]="userModel.phone" matInput [formControl]="phoneFormControl"
+                      [errorStateMatcher]="matcher" placeholder="Số điện thoại">
+                    <mat-error *ngIf="phoneFormControl.hasError('required')">
+                      Số điện thoại là <strong>bắt buộc</strong>
+                    </mat-error>
+                    <mat-error *ngIf="phoneFormControl.hasError('pattern')">
+                      Số điện thoại phải là <strong>số</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+            </table>
+
+            <!-- born, address -->
+            <table class="example-full-width" cellspacing="0">
+
+              <!-- input web -->
+              <tr class="list-search-web">
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="userModel.born" class="uk-input" [formControl]="bornFormControl"
+                      [errorStateMatcher]="matcher" (click)="picker.open()" [max]="minDate" matInput
+                      [matDatepicker]="picker" (focus)="picker.open()" placeholder="Chọn ngày sinh" readonly>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="bornFormControl.hasError('required')">
+                      Ngày sinh <strong>bắt buộc</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="userModel.email" matInput placeholder="Email" [formControl]="emailFormControl"
+                      [errorStateMatcher]="matcher">
+                    <mat-hint>Vui lòng! Nhập đúng Email để nhận thông tin vé!</mat-hint>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Vui lòng nhập đúng địa chỉ email
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email là <strong>bắt buộc</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <!-- input mobile -->
+              <tr class="list-search-mobile" style="margin-bottom: 0; padding-bottom: 0;">
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="userModel.born" class="uk-input" [formControl]="bornFormControl"
+                      [errorStateMatcher]="matcher" (click)="pickerMobile.open()" [max]="minDate" matInput
+                      [matDatepicker]="pickerMobile" (focus)="pickerMobile.open()" placeholder="Chọn ngày sinh" readonly>
+                    <mat-datepicker #pickerMobile></mat-datepicker>
+                    <mat-error *ngIf="bornFormControl.hasError('required')">
+                      Ngày sinh <strong>bắt buộc</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <input [(ngModel)]="userModel.email" matInput placeholder="Email" [formControl]="emailFormControl"
+                      [errorStateMatcher]="matcher">
+                    <mat-hint>Vui lòng! Nhập đúng Email để nhận thông tin vé!</mat-hint>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                      Vui lòng nhập đúng địa chỉ email
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                      Email là <strong>bắt buộc</strong>
+                    </mat-error>
                   </mat-form-field>
                 </td>
               </tr>
@@ -163,14 +269,12 @@
             </table>
 
             <p>
+              <!-- address -->
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
-                <mat-hint>Vui lòng! Nhập đúng Email để nhận thông tin vé!</mat-hint>
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                  Please enter a valid email address
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                  Email is <strong>required</strong>
+                <input [(ngModel)]="userModel.address" matInput placeholder="Địa chỉ" [formControl]="addressFormControl"
+                  [errorStateMatcher]="matcher">
+                <mat-error *ngIf="addressFormControl.hasError('required')">
+                  Địa chỉ là <strong>bắt buộc</strong>
                 </mat-error>
               </mat-form-field>
             </p>

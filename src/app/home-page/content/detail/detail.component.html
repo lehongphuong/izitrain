@@ -3,8 +3,12 @@
   <!-- header web -->
   <div class="uk-width-1-4@m list-search-web">
     <div>
-      <p class="uk-text-meta">HOME/ QUANGNGAI/ SAKY TO LYSON</p>
-      <p class="uk-text-small uk-text-emphasis uk-text-bolder">Cảng Sa Kỳ đến Đảo Lý Sơn</p>
+      <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-meta">HOME/ QUANGNGAI/ SAKY TO LYSON</p>
+      <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-meta">HOME/ QUANGNGAI/ LYSON TO SAKY</p>
+      <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-small uk-text-emphasis uk-text-bolder">Cảng Sa Kỳ đến Đảo Lý
+        Sơn</p>
+      <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-small uk-text-emphasis uk-text-bolder">Đảo Lý Sơn đến Cảng
+        Sa Kỳ</p>
     </div>
 
     <!-- info booking -->
@@ -16,7 +20,8 @@
       <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Ngày đi</p>
       <div class="uk-width-expand@m uk-inline">
         <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: calendar"></span>
-        <input class="uk-input" (click)="picker.open()" [min]="minDate" matInput style="padding-left: 40px; width: 93%;"
+        <input [(ngModel)]="tripModel.start_date" [ngModelOptions]="{standalone: true}" class="uk-input"
+          (click)="picker.open()" disabled [min]="minDate" matInput style="padding-left: 40px; width: 93%;"
           [matDatepicker]="picker" (focus)="picker.open()" placeholder="Chọn ngày đi" readonly>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </div>
@@ -25,10 +30,9 @@
       <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giờ đi</p>
       <div class="uk-width-expand@m uk-inline">
         <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: calendar"></span>
-        <mat-select [value]="0" class="uk-select" style="padding-left: 40px; width: 93%;" placeholder="Giờ đi">
-          <mat-option [value]="0">8:00</mat-option>
-          <mat-option [value]="1">8:30</mat-option>
-          <mat-option [value]="2">9:00</mat-option>
+        <mat-select [(ngModel)]="tripBook.id" [ngModelOptions]="{standalone: true}" class="uk-select"
+          style="padding-left: 40px; width: 93%;" placeholder="Giờ đi">
+          <mat-option *ngFor="let trip of trips" [value]="trip.id">{{trip.start_time_train}}</mat-option>
         </mat-select>
       </div>
 
@@ -36,15 +40,16 @@
       <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Số lượng vé</p>
       <div class="uk-width-expand@m uk-inline">
         <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: users"></span>
-        <input matInput value="2" class="uk-select" style="padding-left: 40px; width: 93%;" placeholder="Số lượng vé">
+        <input [(ngModel)]="numberTicket" [ngModelOptions]="{standalone: true}" matInput class="uk-select"
+          (change)="onChangeNumberTicket()" style="padding-left: 40px; width: 93%;" placeholder="Số lượng vé">
       </div>
 
       <!-- giá tiền -->
       <p style="margin-bottom: 5px;" class="uk-text-small uk-text-bold">Giá tiền</p>
       <div class="uk-width-expand@m uk-inline">
         <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;" uk-icon="icon: credit-card"></span>
-        <input matInput [readonly]="'true'" value="165000" class="uk-select" style="padding-left: 40px; width: 93%;"
-          placeholder="Giá tiền">
+        <input matInput [readonly]="'true'" value="{{totalPrice | currency:'VND'}}" class="uk-select"
+          style="padding-left: 40px; width: 93%;" placeholder="Giá tiền">
       </div>
 
 
@@ -80,6 +85,7 @@
 
           <p class="uk-text-uppercase"
             style="font-size: 11px; font-weight: bold; margin-top: 10px; margin-bottom: 0px;">
+            <span uk-icon="star" style="color:#FFAA00;"></span>
             <span uk-icon="star" style="color:#FFAA00;"></span>
             <span uk-icon="star" style="color:#FFAA00;"></span>
             <span uk-icon="star" style="color:#FFAA00;"></span>
@@ -149,7 +155,10 @@
         <!-- row 3 detail schedule -->
         <div style="margin-top: 20px;">
           <p class="uk-text-lead uk-text-bold" style="text-align: center;">CHI TIẾT LỊCH TRÌNH</p>
-          <p class="uk-text-secondary" style="text-align: left;">Cảng Sa Kỳ => Đảo Lý Sơn</p>
+          <p *ngIf="tripModel.type_ticket == '0'" class="uk-text-secondary" style="text-align: left;">Cảng Sa Kỳ => Đảo
+            Lý Sơn</p>
+          <p *ngIf="tripModel.type_ticket == '1'" class="uk-text-secondary" style="text-align: left;">Đảo Lý Sơn => Cảng
+            Sa Kỳ </p>
           <table class="uk-table uk-table-divider">
             <thead>
               <tr>
@@ -183,39 +192,7 @@
                     Chọn</button>
                 </td>
               </tr>
-              <tr>
-                <td>8:00</td>
-                <td>8:30</td>
-                <td>30 phút</td>
-                <td>170,000 vnđ</td>
-                <td>
-                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
-                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
-                    Chọn</button>
-                </td>
-              </tr>
-              <tr>
-                <td>8:00</td>
-                <td>8:30</td>
-                <td>30 phút</td>
-                <td>170,000 vnđ</td>
-                <td>
-                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
-                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
-                    Chọn</button>
-                </td>
-              </tr>
-              <tr>
-                <td>8:00</td>
-                <td>8:30</td>
-                <td>30 phút</td>
-                <td>170,000 vnđ</td>
-                <td>
-                  <button class="uk-button uk-button-primary uk-width-3-4 uk-button-small" (click)="onSelectClick()"
-                    style="border-radius: 20px; background-color: #fff; border-color: lightseagreen; color: lightseagreen;">
-                    Chọn</button>
-                </td>
-              </tr>
+
 
             </tbody>
           </table>
@@ -302,7 +279,8 @@
                   <div class="uk-width-expand@m uk-inline">
                     <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
                       uk-icon="icon: calendar"></span>
-                    <input class="uk-input" (click)="pickerMobile.open()" [min]="minDate" matInput
+                    <input [(ngModel)]="tripModel.start_date" [ngModelOptions]="{standalone: true}" class="uk-input"
+                      (click)="pickerMobile.open()" disabled [min]="minDate" matInput
                       style="padding-left: 40px; width: 100%;" [matDatepicker]="pickerMobile"
                       (focus)="pickerMobile.open()" placeholder="Chọn ngày đi" readonly>
                     <mat-datepicker touchUi #pickerMobile></mat-datepicker>
@@ -313,8 +291,8 @@
                   <div class="uk-width-expand@m uk-inline">
                     <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
                       uk-icon="icon: calendar"></span>
-                    <mat-select [value]="0" class="uk-select" style="padding-left: 40px; width: 100%;"
-                      placeholder="Giờ đi">
+                    <mat-select [(ngModel)]="tripBook.start_time_train" [ngModelOptions]="{standalone: true}" [value]="0"
+                      class="uk-select" style="padding-left: 40px; width: 100%;" placeholder="Giờ đi">
                       <mat-option [value]="0">8:00</mat-option>
                       <mat-option [value]="1">8:30</mat-option>
                       <mat-option [value]="2">9:00</mat-option>
@@ -326,7 +304,8 @@
                   <div class="uk-width-expand@m uk-inline">
                     <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
                       uk-icon="icon: users"></span>
-                    <input matInput value="2" class="uk-select" style="padding-left: 40px; width: 100%;"
+                    <input [(ngModel)]="numberTicket" [ngModelOptions]="{standalone: true}" matInput class="uk-select"
+                      (change)="onChangeNumberTicket()" style="padding-left: 40px; width: 100%;"
                       placeholder="Số lượng vé">
                   </div>
 
@@ -335,7 +314,7 @@
                   <div class="uk-width-expand@m uk-inline">
                     <span class="uk-form-icon" style="color: #1E87F0; padding-bottom: 5px;"
                       uk-icon="icon: credit-card"></span>
-                    <input matInput [readonly]="'true'" value="165000" class="uk-select"
+                    <input matInput [readonly]="'true'" value="{{totalPrice | currency:'VND'}}" class="uk-select"
                       style="padding-left: 40px; width: 100%;" placeholder="Giá tiền">
                   </div>
 

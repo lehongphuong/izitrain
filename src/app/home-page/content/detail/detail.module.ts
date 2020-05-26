@@ -13,6 +13,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { ApiService } from '../../../common/api-service/api.service';
+import { SendDataService } from '../../../common/api-service/send-data.service';
 
 @NgModule({
   declarations: [DetailComponent],
@@ -35,6 +36,6 @@ import { ApiService } from '../../../common/api-service/api.service';
     MatIconModule,
     MatInputModule
   ],
-  providers: [ApiService]
+  providers: [ApiService, SendDataService]
 })
 export class DetailModule { }

@@ -10,8 +10,7 @@ import {
   MatNativeDateModule,
   MatExpansionModule,
   MatIconModule
-} from '@angular/material';
-import { ApiService } from '../../../common/api-service/api.service';
+} from '@angular/material'; 
 
 @NgModule({
   declarations: [ListComponent],
@@ -34,6 +33,6 @@ import { ApiService } from '../../../common/api-service/api.service';
     MatIconModule
 
   ],
-  providers: [ApiService]
+  providers: []
 })
 export class ListModule { }

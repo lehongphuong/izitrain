@@ -4,7 +4,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookingComponent } from './booking.component';
-import { MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule } from '@angular/material';
+import { MatInputModule, MatDatepickerModule, MatNativeDateModule, MatExpansionModule } from '@angular/material';
 import { ApiService } from '../../../common/api-service/api.service';
 
 @NgModule({
@@ -21,7 +21,9 @@ import { ApiService } from '../../../common/api-service/api.service';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ],
   providers: [ApiService]

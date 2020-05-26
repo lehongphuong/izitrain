@@ -45,22 +45,22 @@
 //     // driver(id, idCompany, username, fullname, password, cmnd, phone, address, experience, image)
 
 //     // -40 thông tin chuyến đi của tài xế
-//     // trip(id, idDriver, type[xe đi ké hay xe quay đầu],fromLocation, destLocation,fromCenter,destCenter, startDate, endDate, startTime, endTime, price, numberSeat)
+//     // trip(id, idDriver, type[xe đi ké hay xe quay đầu],fromLocation, destLocation,fromCenter,destCenter, start_date, endDate, startTime, endTime, price, number_seat)
 
 //     // -50 các quy định đi xe như có nhạc, có hút thuốc hay không, có điều hòa hay không
 //     // regulation(id, idTrip, name)
 
 //     // -60 thông tin vé xe
-//     // ticket(id, idUser, idTrip, startDate, endDate, status[đã dùng hay chưa, hoăc hủy], type[vé thanh toán rồi, vé online thanh toán sau], price,) 
+//     // ticket(id, idUser, idTrip, start_date, endDate, status[đã dùng hay chưa, hoăc hủy], type[vé thanh toán rồi, vé online thanh toán sau], price,) 
 
 //     // -70 đánh giá của khách hàng với tài xế trong chuyến đi nào đó
 //     // comment(id, idTrip, idDriver, idUser, star(1->5), message, feedback)
 
 //     // -80 Khuyến mãi với các chuyến đi khi thanh toán thì sẽ giảm giá
-//     // reward(id, percent, maxPrice(áp dụng với chuyến đi tối đa bao nhiêu tiền), startDate, endDate, status(đã dùng hay chưa))
+//     // reward(id, percent, maxPrice(áp dụng với chuyến đi tối đa bao nhiêu tiền), start_date, endDate, status(đã dùng hay chưa))
 
 //     // -90 Thông tin công ty vận tải muốn tham gia
-//     // company(id, name, phone, address, startDate, endDate, status(còn hoạt động hay không))     
+//     // company(id, name, phone, address, start_date, endDate, status(còn hoạt động hay không))     
 
 //     // 100 - common 
 //     // history(id, idCompany, modDate, userId, sqlQuery, action) => sẻ được implement trong lúc call api  
@@ -204,7 +204,7 @@
 //     }
 
 //     //******************trip************************
-//     // trip(id,idDriver,type,fromLocation,destLocation,fromCenter,destCenter,startDate,endDate,startTime,endTime,price,numberSeat)
+//     // trip(id,idDriver,type,fromLocation,destLocation,fromCenter,destCenter,start_date,endDate,startTime,endTime,price,number_seat)
 //     /**	
 //       * Get all data from trip
 //       */
@@ -263,7 +263,7 @@
 //      */
 //     public getDataSeachTrip(param) {
 //         let q: QueryFn;
-//         q = ref => ref.where('startDate', '==', param.startDate)
+//         q = ref => ref.where('start_date', '==', param.start_date)
 //             .where('fromLocation', '==', param.fromLocation)
 //             .where('destLocation', '==', param.destLocation);
 
@@ -319,7 +319,7 @@
 //     }
 
 //     //******************ticket************************
-//     // ticket(id,idUser,idTrip,startDate,endDate,status,type,price)
+//     // ticket(id,idUser,idTrip,start_date,endDate,status,type,price)
 //     /**	
 //       * Get all data from ticket
 //       */
@@ -401,7 +401,7 @@
 //     }
 
 //     //******************reward************************
-//     // reward(id,percent,maxPrice,startDate,endDate,status)
+//     // reward(id,percent,maxPrice,start_date,endDate,status)
 //     /**	
 //       * Get all data from reward
 //       */
@@ -442,7 +442,7 @@
 //     }
 
 //     //******************company************************
-//     // company(id,name,phone,address,startDate,endDate,status)
+//     // company(id,name,phone,address,start_date,endDate,status)
 //     /**	
 //       * Get all data from company
 //       */

@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { ApiService } from '../../../common/api-service/api.service';
+import { SendDataService } from '../../../common/api-service/send-data.service';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -27,6 +28,6 @@ import { ApiService } from '../../../common/api-service/api.service';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  providers: [ApiService]
+  providers: []
 })
 export class HomeModule { }

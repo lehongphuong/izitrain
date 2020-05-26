@@ -3,17 +3,27 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { CRUDCookieService } from './cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+import { SendDataService } from './send-data.service';
 
 @Injectable()
 export class ApiService {
 
-  // getAllWhatUrl = "https://hoctienganhphanxa.com/api/selectAllByWhat.php";
-  // getAllWhatUrl = "http://thuexeotoquangngai.000webhostapp.com/api/selectAllByWhat.php"; 
-  getAllWhatUrl = "http://localhost:8081/new/izicar/api/selectAllByWhat.php";
+  url = '';
+  getAllWhatUrl = '';
+  company = '1';
 
   constructor(private http: Http,
-    private router: Router
+    private router: Router,
+    public cookie: CRUDCookieService,
+    private toastrService: ToastrService,
+    private datePipe: DatePipe,
+    public sendData: SendDataService
   ) {
+    this.url = "https://tauchinnghia-be.herokuapp.com/api/"; 
+    // this.url = "http://localhost:8000/api/";
   }
 
   /**
@@ -23,8 +33,8 @@ export class ApiService {
    */
   excuteAllByWhat(param: any, what: string): Observable<any[]> {
     let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: cpHeaders });
-    param.what = what;
+    let options = new RequestOptions({ headers: cpHeaders }); 
+    this.getAllWhatUrl = this.url + what;
 
     console.log('Param input', param);
 
@@ -47,12 +57,103 @@ export class ApiService {
   }
 
   /**
+   * convert To Data
+   * @param data 
+   */
+  convertToData(data): any[] {
+    data = JSON.parse(data + '');
+    let result: any[] = [];
+    data.forEach(item => {
+      item.fields.id = item.pk;
+      result.push(item.fields);
+    });
+    return result;
+  }
+
+  /**
    * 
    */
   navigate(url: any) {
-    this.router.navigate([url]);
-    // this.router.navigateByUrl(url);
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      this.router.navigate([url]);
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 200);
+  }
+
+  /**
+   * 
+   * @param date 
+   */
+  formatDate(date: Date): string {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return date.getFullYear() + '-'
+      + (month > 9 ? month : ('0' + month)) + '-'
+      + (day > 9 ? day : ('0' + day));
+  }
+
+  /**
+   * transfrom Date
+   * @param date 
+   */
+  transfromDate(date: string, format: string): string {
+    return this.datePipe.transform(new Date(date), format);
+  }
+
+
+
+  public showError(mess: string) {
+    this.toastrService.error('Pinks Ways!', mess);
+  }
+
+  public showSuccess(mess: string) {
+    this.toastrService.success('Pinks Ways!', mess + '!');
+  }
+
+  public showWarning(mess: string) {
+    this.toastrService.warning('Pinks Ways!', mess + '!');
+  }
+
+
+  /**
+   * convert model to json
+   * @param obj 
+   */
+  toJson(obj: any) {
+    return JSON.stringify(obj);
+  }
+
+  /**
+   * parst json to object
+   * @param json 
+   */
+  toObject(json: any) {
+    return JSON.parse(json);
+  }
+
+  /**
+    * bỏ dấu tiếng việt để search
+  */
+  private cleanAccents(str: string): string {
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+    str = str.replace(/Đ/g, "D");
+    // Combining Diacritical Marks
+    str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // huyền, sắc, hỏi, ngã, nặng 
+    str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // mũ â (ê), mũ ă, mũ ơ (ư)
+
+    return str;
   }
 
 

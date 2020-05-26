@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../common/api-service/api.service';
 
 declare var paypal;
 
@@ -9,9 +10,10 @@ declare var paypal;
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+    // this.api.cookie.clearAll(); 
     
   }
 

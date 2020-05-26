@@ -1,16 +1,17 @@
--user(id, idCompany, name, phone, cmnd, address, born)
--ticket(id, idCompany, idTrain, idTrip, idUser, numberSeat, isDebt[có nợ hay không], startDate, status[vé đã sử dụng hay chưa](0,1,2)(vé giử, vé đã mua, vé đã dùng), price, timeCheckIn, role[customer, traveler, boss])
--ticket(id, idCompany, idTrain, nametrain, idTrip, idUser, numberSeat, isDebt[có nợ hay không], startDate, status[vé đã sử dụng hay chưa](0,1,2)(vé giử, vé đã mua, vé đã dùng), price, timeCheckIn, role[customer, traveler, boss])
+-user(id, idCompany, name, phone, cmnd, email, address, born)
+-ticket(id, idCompany, idTrain, idTrip, idUser, number_seat, isDebt[có nợ hay không], start_date, status[vé đã sử dụng hay chưa](0,1,2)(vé giử, vé đã mua, vé đã dùng), price, timeCheckIn, role[customer, traveler, boss])
+-ticket(id, idCompany, idTrain, nametrain, idTrip, idUser, id_booking, number_seat, isDebt[có nợ hay không], start_date, status[vé đã sử dụng hay chưa](0,1,2,3,4)(vé giử, vé đã mua, vé đã dùng, book online đã thanh toán, book online chưa thanh toán), price, timeCheckIn, role[customer, traveler, boss])
 -train(id, name, totalSeat)
--debt(id, idCompany, idUser, idTicket, status, startDate, endDate, money)
--PayDebt(id, idDebt, idUser, startDate, money_spend, note)
+-debt(id, idCompany, idUser, idTicket, status, start_date, endDate, money)
+-PayDebt(id, idDebt, idUser, start_date, money_spend, note)
 -company(id, idParent, username, password, name, phone, born, address)
--PriceTicket(id, idCompany, idTrip, priceOrigin[giá vé công ty quy định cho đại lý], price)
-//-trip(id, idCompany, idTrain, startDate, startTimeTrain, endTimeTrain, typeTicket=[vé ra hay vé vào])
--trip(id, idCompany, idTrain, startDate, startTimeTrain, endTimeTrain, typeTicket=[vé ra hay vé vào], priceOrigin[giá vé công ty quy định cho đại lý], price)
+-PriceTicket(id, idCompany, idTrip, price_origin[giá vé công ty quy định cho đại lý], price)
+//-trip(id, idCompany, idTrain, start_date, start_time_train, end_time_train, typeTicket=[vé ra hay vé vào])
+-trip(id, idCompany, idTrain, start_date, start_time_train, end_time_train, typeTicket=[vé ra hay vé vào], price_origin[giá vé công ty quy định cho đại lý], price)
 staff(id, idCompany, username, name, born, address)
 status của seat sẽ reset vào 0 giờ hàng ngày	
 point(id, idUser, coin)
+booking(id, id_trip, id_user, number_ticket, coupon, payment_type, payment_status, start_date)
 
 bán vé
 Quản lý Khách hàng
@@ -40,11 +41,11 @@ INNER JOIN herokuapp_Train train on ticket.idTrain = train.id
 INNER JOIN herokuapp_User user on ticket.idUser = user.id
 WHERE ticket.idCompany = %s
 
-['idTicket', 'trainName', 'name', 'numberSeat', 'startDate', 'startTimeTrain', 'endTimeTrain', 'status', 'price', 'timeCheckIn'];
+['idTicket', 'trainName', 'name', 'number_seat', 'start_date', 'start_time_train', 'end_time_train', 'status', 'price', 'timeCheckIn'];
 
 
-{ "idTrain":1,"idTrip":1,"startDate":"2019-07-03"}
-{"idTrain": 1, "idTrip": "1", "startDate": "2019-07-05", "typeTicket": "0"}
+{ "idTrain":1,"idTrip":1,"start_date":"2019-07-03"}
+{"idTrain": 1, "idTrip": "1", "start_date": "2019-07-05", "typeTicket": "0"}
 { "username":"Phuong", "name": "le hong phuong", "born":"1993-07-09","address":"Đà Nẵng"}
 
 

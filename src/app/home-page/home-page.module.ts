@@ -5,6 +5,8 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';  
 import { RouterModule } from '@angular/router'; 
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import { ApiService } from '../common/api-service/api.service';
+import { SendDataService } from '../common/api-service/send-data.service';
 
 @NgModule({
   declarations: [HomePageComponent, MenuComponent, FooterComponent],
@@ -18,6 +20,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
         ],
       } 
     ]), 
-  ]
+  ],
+  providers: [ApiService, SendDataService]
 })
 export class HomePageModule { }
